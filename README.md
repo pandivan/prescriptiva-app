@@ -1,2 +1,2 @@
 # prescriptiva-app
-Carvajal
+app mobil para prescriptiva
