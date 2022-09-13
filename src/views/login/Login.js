@@ -1,74 +1,108 @@
+import React, { useState, useContext } from "react";
+import { Box, Icon, Pressable, Heading, VStack, FormControl, Input, Link, Button, HStack, Center, NativeBaseProvider, StatusBar, WarningOutlineIcon } from "native-base";
+import { MaterialIcons } from "@expo/vector-icons";
 
-// import * as React from 'react'; 
-import { Image, Icon } from 'react-native'; 
-import { NativeBaseProvider, Box, VStack, Center, Divider, Heading, Text } from "native-base";
-
-import styles from './stylesLogin';
-// import ContextoAutenticacion from '../../../ContextoAutenticacion';
+import AuthContext from '../../contexts/AuthContext';
 
 
 
-//Componente Funcional
-const Login = () =>
+//Componente Funcional que se encarga de loguear al usuario
+const Login = ({navigation}) =>
 {
-  // const [login, setLogin] = React.useState('');
-  // const [password, setPassword] = React.useState('');
-  // const [isMostrar, setIsMostrar] = React.useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMessageEmail, setErrorMessageEmail] = useState("");
+  const [isRequiredEmail, setIsRequiredEmail] = useState(false);
+  const [isRequiredPassword, setIsRequiredPassword] = useState(false);
+  const [show, setShow] = useState(false);
   
-  // const { iniciarSesion } = React.useContext(ContextoAutenticacion);
+  //Hook que permite invocar al metodo signIn(useMemo) del App.js
+  const { signIn } = useContext(AuthContext);
+
+
+  /**
+   * Función que permite validar los datos del formulario
+   */
+  const validateForm = () =>
+  {
+    let isValidForm = true;
+
+    if("" === email)
+    {
+      isValidForm = false;
+      console.log("Validate Form email")
+      setIsRequiredEmail(true);
+      setErrorMessageEmail("Ingresa un correo electrónico");
+    }
+
+    if("" === password)
+    {
+      isValidForm = false;
+      console.log("Validate Form password")
+      setIsRequiredPassword(true);
+    }
+
+    if(isValidForm)
+    {
+      console.log("**** LOGIN OK *****");
+      signIn({ email, password });
+    }
+  }
   
   return (
     <NativeBaseProvider>
-      {/* <Box flex={0.3} bg="light.400" alignItems="flex-start" justifyContent="center">
-        <Center bg="error.600">
-          <Text style={styles.text}>Iniciar Sesión</Text>
-          <Text style={styles.text}>ivan</Text>
-        </Center>
-        <Image source={{ uri:"https://drive.google.com/uc?id=1tp7sy2gjRhMvSD0ka8rgANUA82t10ujQ"}} style={styles.logoApp} />
-      </Box> */}
-      <Center flex={1}>
+      <StatusBar barStyle="light-content" backgroundColor="black" />
+      <Center flex={1} backgroundColor="black" borderColor_="green.500" borderWidth_="3">
+        <Box safeArea p="2" py="8" width="90%" maxW="290" borderColor_="red.500" borderWidth_="3">
+          <Heading size="lg" fontWeight="600" color="indigo.500">
+            Inicio de Sesión
+          </Heading>
+          {/* <Heading mt="1" _dark={{color: "warmGray.200"}} color="coolGray.600" fontWeight="medium" size="xs">
+            Use las credenciales enviadas en el
+          </Heading> */}
 
-        <Box bgColor="muted.600" borderRadius="xl" w="80%" h="40" alignItems="center" >
-            <Text  w="90%" color="white" p="2">
-              Titulo
-            </Text>
-            <Divider my="2" />
-            <Box w="40" alignItems="center" justifyContent="center">
-              <Heading mx="3" alignItems="center" flexDirection="row">
-                Chrome
-              </Heading>
-              <Divider my="2" />
-              <Heading mx="3" alignItems="center" flexDirection="row">
-                Firefox
-              </Heading>
-            </Box>
+          <VStack space={3} mt="7" borderColor_="blue.500" borderWidth_="3">
+            <FormControl isRequired={isRequiredEmail} isInvalid={isRequiredEmail}>
+              <FormControl.Label>Correo</FormControl.Label>
+                <Input value={email} onChangeText={setEmail} color="white" />
+                <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
+                  {errorMessageEmail}
+                </FormControl.ErrorMessage>
+            </FormControl>
+
+            <FormControl isRequired={isRequiredPassword} isInvalid={isRequiredPassword}>
+              <FormControl.Label>Contraseña</FormControl.Label>
+                <Input  value={password} onChangeText={setPassword}
+                        type={show ? "text" : "password"} 
+                        InputRightElement=
+                        {
+                          <Pressable onPress={() => setShow(!show)}>
+                            <Icon as={<MaterialIcons name={show ? "visibility" : "visibility-off"} />} size={5} mr="2" color="muted.400" />
+                          </Pressable>
+                        }
+                        color="white"
+                />
+
+                <Link _text={{fontSize: "xs", fontWeight: "500", color: "indigo.500"}} alignSelf="flex-end" mt="2">
+                  Olvidó la Contraseña?
+                </Link>
+            </FormControl>
+
+            <Button onPress={validateForm} mt="5" colorScheme="indigo">
+              Continuar
+            </Button>
+
+            <HStack mt="6" justifyContent="center">
+              <Link _text={{color: "indigo.500", fontWeight: "medium", fontSize: "sm"}} href="#">
+                Tienes problemas con tus credenciales?
+              </Link>
+            </HStack>
+          </VStack>
         </Box>
       </Center>
     </NativeBaseProvider>
   ); 
 }
 
-// alignItems="center" justifyContent="center" justifyItems="center" 
 
 export default Login;
-
-// <Label style={styles.textSuscripcion} onPress={() => this.setState({isMostrar: !this.state.isMostrar})}>Primera vez en mi Tienda? Suscribete ya.</Label>
-
-// isMostrar = () => 
-//   {
-//     if(this.state.isMostrar)
-//     {
-//       this.setState({isMostrar: false})
-//     }
-//     else
-//     {
-//       this.setState({isMostrar: true})
-//     }
-//   };
-
-// const onPressTitle = () => 
-// {
-//   Alert.alert("title pressed");
-// };
-
-

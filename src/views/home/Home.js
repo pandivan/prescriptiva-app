@@ -23,7 +23,7 @@ const Home = () =>
       <Center flex={1} borderColor_="green.500" borderWidth_="3">
         <Center px="2" backgroundColor="black" justifyContent={"flex-start"} alignItems="flex-start" width="100%" borderColor_="red.500" borderWidth_="3">
           <ScrollView maxW="100%" height="100%" pt="1" _contentContainerStyle_={{borderColor:"blue.500", borderWidth:"5"}}>            
-            {/* Tarjeta que muestra las ventas mensuales */}
+            {/* Tarjeta que muestra KPI */}
             <Box background="warning.400" width="100%" p="5" rounded="15" shadow={3} height="192" mb="5" borderColor_="green.500" borderWidth_="3">
               <HStack justifyContent="center" alignContent={"center"} width="100%" space="3" borderColor_="red.500" borderWidth_="3">
                 <Image key={"1"} width="50%" resizeMode="cover" source={require("../../../assets/grap1.png")} alt={"Alternate Text sm"} borderColor_="blue.700" borderWidth_="3"/>

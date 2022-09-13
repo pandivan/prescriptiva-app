@@ -10,17 +10,22 @@ import axios from "axios";
  * Función que permite actualizar o registrar un nuevo cliente en BD
  * @param cliente, Cliente actualizar o registrar
  */
-const registrarCliente = async (cliente) => 
+const registerCliente = async (client) => 
 {
   try
   {
     // console.log(JSON.stringify(cliente));
-    let respuesta = await axios.post(`${BACKEND_URL}`, cliente);
+    // let result = await axios.post(`${BACKEND_URL}`, client);
 
-    // console.log("Respuesta API-REST Cliente. ");
+    let result = 
+    {
+      data:"token_pandi"
+    };
+
+    console.log("Respuesta API-REST Registrar Cliente.");
     // console.log(JSON.stringify(respuesta));
 
-    return { success: ("" !== respuesta.data), cliente: respuesta.data };
+    return { success: ("" !== result.data), userToken: result.data };
   }
 	catch(error)
   {
@@ -34,18 +39,22 @@ const registrarCliente = async (cliente) =>
 
 /**
  * Función que permite validar un cliente en BD, según login y password
- * @param cliente, Cliente a consultar
+ * @param client, Cliente a consultar
  */
-const validarCliente = async (cliente) => 
+const validateClient = async (client) => 
 {
   try
   {
-    let respuesta = await axios.post(`${BACKEND_URL}/validar`, cliente);
+    // let result = await axios.post(`${BACKEND_URL}/validar`, client);
+    let result = 
+    {
+      data:"token_pandi"
+    };
 
     // console.log("Respuesta API-REST Consultar Cliente ");
-    // console.log(JSON.stringify(respuesta));
+    // console.log(JSON.stringify(result));
 
-    return { success: ("" !== respuesta.data), cliente: respuesta.data };
+    return { success: ("" !== result.data), userToken: result.data };
   }
   catch(error)
   {
@@ -58,6 +67,6 @@ const validarCliente = async (cliente) =>
 
 export default 
 {
-  registrarCliente,
-  validarCliente
+  registerCliente,
+  validateClient
 };

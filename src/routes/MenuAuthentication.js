@@ -1,15 +1,21 @@
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createStackNavigator } from '@react-navigation/stack';
 // import Registro from "../containers/login/Registro";
 import Login from "../views/login/Login";
 
 
-const Stack = createNativeStackNavigator();
+const Stack = createStackNavigator();
 
 
 const MenuAuthentication = () =>
 {
   return (
-    <Stack.Navigator initialRouteName="Login">
+    <Stack.Navigator 
+      initialRouteName="Login"
+      screenOptions=
+      {{
+        headerShown:false
+      }}
+    >
       <Stack.Screen name="Login" component={Login} />
     </Stack.Navigator>
   );
