@@ -51,7 +51,7 @@ const validateClient = async (client) =>
       data:"token_pandi"
     };
 
-    // console.log("Respuesta API-REST Consultar Cliente ");
+    console.log("Respuesta API-REST Consultar Cliente ");
     // console.log(JSON.stringify(result));
 
     return { success: ("" !== result.data), userToken: result.data };

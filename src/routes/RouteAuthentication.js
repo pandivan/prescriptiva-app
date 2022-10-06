@@ -6,19 +6,17 @@ import Login from "../views/login/Login";
 const Stack = createStackNavigator();
 
 
-const MenuAuthentication = () =>
+const RouteAuthentication = () =>
 {
   return (
     <Stack.Navigator 
       initialRouteName="Login"
-      screenOptions=
-      {{
-        headerShown:false
-      }}
-    >
+      screenOptions={{headerShown:false}}>
+
       <Stack.Screen name="Login" component={Login} />
+      
     </Stack.Navigator>
   );
 }
 
-export default MenuAuthentication;
+export default RouteAuthentication;
