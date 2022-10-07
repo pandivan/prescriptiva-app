@@ -13,7 +13,7 @@ const BarVerticalChart = (props) =>
   return (
     <Box width="100%" px="2" mt="6" borderColor_="yellow.500" borderWidth_="1">
       <Box mb="8" pt="3" backgroundColor="#1B1F25" borderRadius="10" borderColor_="green.500" borderWidth_="1">
-        <VictoryChart height={280}>
+        <VictoryChart height={280} padding={{ top:50, bottom:63, left:50, right:50 }}>
           
           {/* Leyenda de años */}
           <VictoryLegend
@@ -53,7 +53,7 @@ const BarVerticalChart = (props) =>
               //Barra del eje Y
               axis:{ stroke: "transparent" },
               //Etiquetas del eje Y
-              tickLabels:{ fill: "#ebe0e1", fontSize: 14 },
+              tickLabels:{ fill: "#ebe0e1", fontSize: 12 },
               //Descripción eje Y 
               axisLabel:{ fill: "#ebe0e1", padding: 36, fontSize: 13, fontStyle: "italic" },
               //Lineas del eje Y en el plano cartesiano
@@ -66,14 +66,15 @@ const BarVerticalChart = (props) =>
           {/* Eje X */}
           <VictoryAxis 
             label="Ventas Mes"
+            tickLabelComponent={<VictoryLabel angle={-45}/>}
             style=
             {{ 
                 //Etiquetas del eje X
-                tickLabels:{fill:"#ebe0e1", fontSize: 14}, 
+                tickLabels:{fill:"#ebe0e1", fontSize: 12}, 
                 //Barra del eje X
                 axis:{stroke: "transparent"}, 
                 //Descripción eje X
-                axisLabel:{padding:35, fill:"#ebe0e1", fontSize:13, fontStyle:"italic"}
+                axisLabel:{padding:45, fill:"#ebe0e1", fontSize:13, fontStyle:"italic"}
             }}
           />
           

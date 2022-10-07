@@ -199,6 +199,7 @@ const StaticChart = ({ navigation }) =>
           borderRadius="10" mb="5"
           startIcon={<Fontisto name="shopping-sale" size={24} color="#6133E4" />}
           _text={{color:"white", mr:8}} />
+          
         <Select.Item label="Cuál es la venta acumulada frente al año anterior?" value="4" 
           backgroundColor="#1B1F25"
           borderRadius="10" mb="5"

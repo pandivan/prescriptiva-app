@@ -23,9 +23,9 @@ var {height, width } = Dimensions.get("window");
  */
 const Home = ({ navigation, route }) =>
 {
-  const [unit, setUnit] = useState();
+  const [unit, setUnit] = useState("quantity");
   const [lstDailySales, setLstDailySales] = useState([]);
-  const [lstPointsSale, setLstPointsSale] = useState([]);
+  const [lstDataIndicator, setLstDataIndicator] = useState([]);
 
 
   /**
@@ -80,6 +80,8 @@ const Home = ({ navigation, route }) =>
 
     loadData();
     loadDailySales("7701001003306", "quantity");
+    
+    loadDataIndicator("7701001002804#JUAN CARLOS GONZALEZ#1#quantity");
   }, []);
 
 
@@ -95,6 +97,7 @@ const Home = ({ navigation, route }) =>
       await SecureStore.setItemAsync("eanPointSale", JSON.stringify(eanPointSale));
 
       loadDailySales(eanPointSale);
+      loadDataIndicator(eanPointSale.concat("#JUAN CARLOS GONZALEZ#1#").concat(unit));
     }
     catch(error)
     {
@@ -171,6 +174,55 @@ const Home = ({ navigation, route }) =>
     }
   };
 
+
+  const loadDataIndicator = async (sk) => 
+  {
+    try 
+    {
+      //Se obtiene la data para el indicador de ventas diarias según el punto de venta seleccionado a traves del api-rest
+      let { status, lstDataIndicatorBD } = await indicatorService.loadDataIndicator(sk);
+
+      switch (status) 
+      {
+        case Constants.STATUS_OK:
+          setLstDataIndicator(lstDataIndicatorBD);
+          break;
+
+        case Constants.STATUS_ACCESO_DENEGADO:
+          //Si tiene token es porque estoy logueado y debo informar que la sesión expiro
+          //  if(autenticacionServices.getToken())
+          //  {
+          //    setMensajePopup("Tu sesión ha expirado!!!");
+          //    setMostrarPopup(true);
+          //  }
+
+          //  autenticacionServices.removerToken();
+          console.log("acceso denegado home");
+          lstDataIndicatorBD = null;
+          break;
+
+        default:
+          //Valida si hubo un error en el api-rest
+          //Si tiene token es porque estoy logueado y debo informar que hubo un error en el backend
+          //  if(autenticacionServices.getToken())
+          //  {
+          //    setMensajePopup("En el momento no es posible acceder a la\ninformación, favor intentarlo más tarde.");
+          //    setMostrarPopup(true);
+          //  }
+          console.log("acceso denegado");
+          lstDataIndicatorBD = null;
+          break;
+      }
+
+      return lstDataIndicatorBD;
+    } 
+    catch (error) 
+    {
+      //TODO: Guardar log del error en BD
+      console.log("error al obtener la data para el indicador de ventas diarias (Home)");
+    }
+  };
+  
   
   /**
    * Función que permite definir el color del pie según la meta del presupuesto del vendedor
@@ -286,14 +338,14 @@ const Home = ({ navigation, route }) =>
                       <Center mt="4" borderColor_="yellow.300" borderWidth_="1">
                         <VictoryPie
                           animate={true}
-                          data={data.dataPie}
-                          y={(dataValue) => (unit === "quantity") ? dataValue.current_year_quantity : dataValue.current_year_value}
-                          innerRadius={38}
+                          data={lstDataIndicator}
+                          y={(data) => data.x}
+                          innerRadius={32}
                           height={125}
-                          padding={{ top:10, bottom:15, left:5, right:5 }}
+                          padding={{ top:20, bottom:15, left:5, right:5 }}
                           // labels={({ datum }) => `%${datum.y}`}
                           // labelComponent={<VictoryLabel angle={320}/>}
-                          // labelRadius={50} //coloca el label mas cerca al centro
+                          labelRadius={51} //coloca el label mas cerca al centro
                           colorScale={["#FFA836", "#553AB6", "#65D292", "#4DCAFA", "#2E3043"]}
                           style={{labels:{fontSize:10, fill:"white", padding:5}}}
                         />

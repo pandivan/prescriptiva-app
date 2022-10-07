@@ -33,7 +33,7 @@ const TableChart = (props) =>
                     :
                       <ArrowDownIcon color="red.500"/>
                   }
-                  <Text width="24" color="white" fontSize="12" textAlign="left">{sale.month_name}</Text>
+                  <Text width="24" color="white" fontSize="12" textAlign="left">{sale.x}</Text>
                 </HStack>
 
                 <HStack width="40" space="5" borderColor_="green.500" borderWidth_="1">

@@ -13,8 +13,8 @@ import AuthContext from '../../contexts/AuthContext';
  */
 const Login = ({navigation}) =>
 {
-  const [email, setEmail] = useState("KCM ALMACENES EXITO");
-  const [password, setPassword] = useState("12345");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [errorMessageEmail, setErrorMessageEmail] = useState("");
   const [isRequiredEmail, setIsRequiredEmail] = useState(false);
   const [isRequiredPassword, setIsRequiredPassword] = useState(false);

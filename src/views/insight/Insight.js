@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Keyboard, Platform, Dimensions } from "react-native";
 import { Center, Text, KeyboardAvoidingView, Input, Button, useDisclose, Box, Actionsheet, IconButton, HStack } from 'native-base';
-import { VictoryAxis, VictoryBar, VictoryChart } from 'victory-native';
+import { VictoryAxis, VictoryBar, VictoryChart, VictoryLabel } from 'victory-native';
 import {Defs, LinearGradient, Stop} from "react-native-svg";
 
 import * as SecureStore from "expo-secure-store";
@@ -143,91 +143,96 @@ const Insight = ({ navigation }) =>
 
   return (
     <Center flex={1} p="2" backgroundColor="#0F1319" justifyContent="flex-start" borderColor_="red.500" borderWidth_="3">
-      <Box mb="8" pt="3" backgroundColor="#1B1F25" borderRadius="10" borderColor_="red.500" borderWidth_="3">
-        {
-          (isDataInsight) ? 
-          (
-            <VictoryChart height={280}>
-            {/* <Defs>
-              <LinearGradient id="gradient1" x1="0%" y1="0%" x2="50%" y2="100%">
-                <Stop offset="0%" stopColor="#EB8459" />
-                <Stop offset="40%" stopColor="#F5735D" />
-                <Stop offset="100%" stopColor="#DE6060" />
-              </LinearGradient>
-            </Defs> */}
+      <Box width="100%" px="2" mt="6" borderColor_="yellow.500" borderWidth_="1">
+        <Box mb="8" pt="3" backgroundColor="#1B1F25" borderRadius="10" borderColor_="green.500" borderWidth_="1">
+          {
+            (isDataInsight) ? 
+            (
+              <VictoryChart height={280}  padding={{ top:50, bottom:63, left:50, right:50 }}>
+              {/* <Defs>
+                <LinearGradient id="gradient1" x1="0%" y1="0%" x2="50%" y2="100%">
+                  <Stop offset="0%" stopColor="#EB8459" />
+                  <Stop offset="40%" stopColor="#F5735D" />
+                  <Stop offset="100%" stopColor="#DE6060" />
+                </LinearGradient>
+              </Defs> */}
 
-            <VictoryAxis
-              style=
-              {{
-                //Barra del eje Y
-                axis:{ stroke: "transparent" },
-                //Etiquetas del eje Y
-                tickLabels:{ fill: "#ebe0e1", fontSize: 14 },
-                //Descripción eje Y 
-                axisLabel:{ fill: "#ebe0e1", padding: 36, fontSize: 15, fontStyle: "italic" },
-                //Lineas del eje Y en el plano cartesiano
-                grid:{ fill: "#ebe0e1", stroke: "#ebe0e1", strokeWidth: 0.5 }
-              }}
-              label="Cantidad"
-              dependentAxis
-            />
+              {/* Eje Y */}
+              <VictoryAxis
+                style=
+                {{
+                  //Barra del eje Y
+                  axis:{ stroke: "transparent" },
+                  //Etiquetas del eje Y
+                  tickLabels:{ fill: "#ebe0e1", fontSize: 12 },
+                  //Descripción eje Y 
+                  axisLabel:{ fill: "#ebe0e1", padding: 36, fontSize: 13, fontStyle: "italic" },
+                  //Lineas del eje Y en el plano cartesiano
+                  grid:{ fill: "#ebe0e1", stroke: "#ebe0e1", strokeWidth: 0.5 }
+                }}
+                label="Cantidad"
+                dependentAxis
+              />
 
-            <VictoryAxis 
-              label="Ventas Mes"
-              style=
-              {{ 
-                  //Etiquetas del eje X
-                  tickLabels:{fill:"#ebe0e1", fontSize: 14}, 
-                  //Barra del eje X
-                  axis:{stroke: "transparent"}, 
-                  //Descripción eje X
-                  axisLabel:{padding:35, fill:"#ebe0e1", fontSize:15, fontStyle:"italic"}
-              }}
-            />
-            
-            <VictoryBar 
-              data={data.dataBar} 
-              cornerRadius={2} 
-              animate={true}
-              style=
-              {{
-                data:{stroke: "transparent", strokeWidth: 1, fill: "#DE6060"}
-              }}
-            />
-            </VictoryChart>
-          ) 
-          :
-          null
-        }
+              {/* Eje X */}
+              <VictoryAxis 
+                label="Ventas Mes"
+                tickLabelComponent={<VictoryLabel angle={-45}/>}
+                style=
+                {{ 
+                    //Etiquetas del eje X
+                    tickLabels:{fill:"#ebe0e1", fontSize: 12}, 
+                    //Barra del eje X
+                    axis:{stroke: "transparent"}, 
+                    //Descripción eje X
+                    axisLabel:{padding:45, fill:"#ebe0e1", fontSize:13, fontStyle:"italic"}
+                }}
+              />
+              
+              <VictoryBar 
+                data={data.dataBar} 
+                cornerRadius={2} 
+                animate={true}
+                style=
+                {{
+                  data:{stroke: "transparent", strokeWidth: 1, fill: "#DE6060"}
+                }}
+              />
+              </VictoryChart>
+            ) 
+            :
+            null
+          }
+        </Box>
+
+        <Actionsheet isOpen={isOpen} onClose={onClose} size="full">
+          <Actionsheet.Content backgroundColor="#252A37">
+            <Box w="100%" h={60} px={4} justifyContent="center">
+              <Text fontSize="16" color="white">
+                Preguntale a cassandra
+              </Text>
+            </Box>
+            <Actionsheet.Item alignItems="center" backgroundColor="#252A37">
+              <KeyboardAvoidingView height={sizeKeyboardView} behavior={Platform.OS === "ios" ? "padding" : "height"}>
+                <HStack width="100%" space={1} borderColor_="red.500" borderWidth_="1">
+                  <Input 
+                    type={"text"} 
+                    width="64" 
+                    borderRadius="8"
+                    borderColor="transparent"
+                    backgroundColor="white" 
+                    placeholder="Digite su pregunta"
+                    placeholderTextColor="#2E3043"
+                    onPressIn={() => expandKeyboard("400px")} 
+                    // InputRightElement={<Button size="xs" backgroundColor="#553AB6" rounded="none" height="12" onPress={sendInsight}> Insight </Button>}
+                  />
+                  <IconButton size_="xs" backgroundColor="#553AB6" borderRadius="8" width="12" onPress={sendInsight} _icon={{as: AntDesign, name: "search1", color:"white"}}/>
+                </HStack>
+              </KeyboardAvoidingView>
+            </Actionsheet.Item>
+          </Actionsheet.Content>
+        </Actionsheet>        
       </Box>
-
-      <Actionsheet isOpen={isOpen} onClose={onClose} size="full">
-        <Actionsheet.Content backgroundColor="#252A37">
-          <Box w="100%" h={60} px={4} justifyContent="center">
-            <Text fontSize="16" color="white">
-              Preguntale a cassandra
-            </Text>
-          </Box>
-          <Actionsheet.Item alignItems="center" backgroundColor="#252A37">
-            <KeyboardAvoidingView height={sizeKeyboardView} behavior={Platform.OS === "ios" ? "padding" : "height"}>
-              <HStack width="100%" space={1} borderColor_="red.500" borderWidth_="1">
-                <Input 
-                  type={"text"} 
-                  width="64" 
-                  borderRadius="8"
-                  borderColor="transparent"
-                  backgroundColor="white" 
-                  placeholder="Digite su pregunta"
-                  placeholderTextColor="#2E3043"
-                  onPressIn={() => expandKeyboard("400px")} 
-                  // InputRightElement={<Button size="xs" backgroundColor="#553AB6" rounded="none" height="12" onPress={sendInsight}> Insight </Button>}
-                />
-                <IconButton size_="xs" backgroundColor="#553AB6" borderRadius="8" width="12" onPress={sendInsight} _icon={{as: AntDesign, name: "search1", color:"white"}}/>
-              </HStack>
-            </KeyboardAvoidingView>
-          </Actionsheet.Item>
-        </Actionsheet.Content>
-      </Actionsheet>        
     </Center>
   );
 }

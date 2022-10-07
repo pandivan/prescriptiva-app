@@ -44,11 +44,11 @@ const loadDailySales = async (eanPointSale, salesman) =>
 
 /**
  * Función que permite obtener las ventas para el indicador seleccionado
- * @param eanPointSale Ean del punto de venta
- * @param salesman Vendedor
+ * @param pk Ean del punto de venta
+ * @param sk Sort key table dynamodb compuesta por [ean_point_sale#salesman#indicator_type#medida]
  * @returns Lista con la ventas del indicador 
  */
- const loadIndicatorData = async (eanPointSale, salesman) => 
+ const loadDataIndicator = async (sk) => 
  {
    try
    {
@@ -56,7 +56,7 @@ const loadDailySales = async (eanPointSale, salesman) =>
      // En el token debe estar mi vendedor
      // let respuesta = await axios.get(`${Constantes.BACKEND_URL}/dailysales`, { headers: tokenServices.autenticacionHeader() });
  
-     dataTemp = data.dataLine.filter(dailySale => eanPointSale.concat("#").concat(salesman)  === dailySale.sk);
+     dataTemp = data.vw_mobile_indicators.filter(dailySale => sk  === dailySale.sk);
  
      let result = 
      {
@@ -67,7 +67,7 @@ const loadDailySales = async (eanPointSale, salesman) =>
      // console.log("Respuesta API-REST getDailySales: ".concat(dataTemp.length));
      // console.log(JSON.stringify(respuesta));
  
-     return { status: result.status, lstDailySalesBD: result.data };
+     return { status: result.status, lstDataIndicatorBD: result.data };
    }
    catch(error)
    {
@@ -80,5 +80,5 @@ const loadDailySales = async (eanPointSale, salesman) =>
 export default 
 {
   loadDailySales,
-  loadIndicatorData
+  loadDataIndicator
 };

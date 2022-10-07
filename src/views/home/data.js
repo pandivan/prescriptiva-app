@@ -1,34 +1,19 @@
 const dataBar = 
 [
-    {x: "e", y: 1},
-    {x: "f", y: 2},
-    {x: "m", y: 3},
-    {x: "a", y: 5},
-    {x: "m", y: 4},
-    {x: "j", y: 7},
-    {x: "ju", y: 8},
-    {x: "a", y: 9},
-    {x: "s", y: 10},
-    {x: "o", y: 11},
-    {x: "n", y: 12},
-    {x: "d", y: 13}
+    {x: "Ene", y: 1},
+    {x: "Feb", y: 2},
+    {x: "Mar", y: 3},
+    {x: "Abr", y: 5},
+    {x: "May", y: 4},
+    {x: "Jun", y: 7},
+    {x: "Jul", y: 8},
+    {x: "Ago", y: 9},
+    {x: "Sep", y: 10},
+    {x: "Oct", y: 11},
+    {x: "Nov", y: 12},
+    {x: "Dic", y: 13}
 ];
 
-
-
-
-
-//La "x" hace referencia al label de cada partición
-//La "y" es la cantidad
-//Cuando colocamos la etiqueta "label" esta etiqueta anula a X y por ende como label de particion toma lo q coloque en "label"
-const dataPie=
-[
-  {x: "TOOTHPASTE", previous_year_quantity: 10, previous_year_value:1000, current_year_quantity:15, current_year_value:1500},
-  {x: "Dulces", previous_year_quantity: 9, previous_year_value:900, current_year_quantity:14, current_year_value:1400},
-  {x: "CLEANERS LIQUID", previous_year_quantity: 3, previous_year_value:1000, current_year_quantity:15, current_year_value:1500},
-  {x: "FC LIQUIDS", previous_year_quantity: 3, previous_year_value:1000, current_year_quantity:15, current_year_value:1500},
-  {x: "OTROS", previous_year_quantity: 3, previous_year_value:1000, current_year_quantity:15, current_year_value:1500}
-];
 
 const dataLine=
 [
@@ -53,15 +38,6 @@ const dataBarMovil =
     {x: "x", y: 3},
     {x: "j", y: 4},
     {x: "v", y: 6}
-];
-
-const dataCategoria = 
-[
-    {x: "Dulces", y: 1},
-    {x: "Bebidas", y: 2},
-    {x: "Licor", y: 3},
-    {x: "Aseo", y: 4},
-    {x: "Comestibles", y: 5}
 ];
 
 
@@ -94,16 +70,16 @@ const dataPie2=
 
 const dataBarHorizontal =
 [
-  {x: "Granizados", month_name: "Enero", previous_year_quantity: 10, previous_year_value:10000, current_year_quantity:20, current_year_value:20000},
-  {x: "Viche", month_name: "Febreo", previous_year_quantity: 9, previous_year_value:9000, current_year_quantity:19, current_year_value:19000},
-  {x: "Papas Pollo", month_name: "Marzo", previous_year_quantity: 8, previous_year_value:8000, current_year_quantity:18, current_year_value:18000},
-  {x: "Crispetas", month_name: "Abril", previous_year_quantity: 7, previous_year_value:7000, current_year_quantity:17, current_year_value:17000},
-  {x: "Manimoto", month_name: "Mayo", previous_year_quantity: 6, previous_year_value:6000, current_year_quantity:16, current_year_value:2000},
-  {x: "Tostacos Queso", month_name: "Junio", previous_year_quantity: 5, previous_year_value:5000, current_year_quantity:15, current_year_value:15000},
-  {x: "Coca cola", month_name: "Julio", previous_year_quantity: 4, previous_year_value:4000, current_year_quantity:14, current_year_value:14000},
-  {x: "Chocolatina", month_name: "Agosto", previous_year_quantity: 3, previous_year_value:3000, current_year_quantity:13, current_year_value:13000},
-  {x: "Ganzito", month_name: "Septiembre", previous_year_quantity: 2, previous_year_value:2000, current_year_quantity:12, current_year_value:12000},
-  {x: "Kipitos", month_name: "Octubre", previous_year_quantity: 1, previous_year_value:1000, current_year_quantity:11, current_year_value:11000}
+  {x: "Suavitel", month_name: "Enero", previous_year_quantity: 10, previous_year_value:10000, current_year_quantity:20, current_year_value:20000},
+  {x: "Soflan", month_name: "Febreo", previous_year_quantity: 9, previous_year_value:9000, current_year_quantity:19, current_year_value:19000},
+  {x: "Colg. 125ML", month_name: "Marzo", previous_year_quantity: 8, previous_year_value:8000, current_year_quantity:18, current_year_value:18000},
+  {x: "Fabuloso", month_name: "Abril", previous_year_quantity: 7, previous_year_value:7000, current_year_quantity:17, current_year_value:17000},
+  {x: "Clean Mint", month_name: "Mayo", previous_year_quantity: 6, previous_year_value:6000, current_year_quantity:16, current_year_value:2000},
+  {x: "Trip Accion", month_name: "Junio", previous_year_quantity: 5, previous_year_value:5000, current_year_quantity:15, current_year_value:15000},
+  {x: "Ajax", month_name: "Julio", previous_year_quantity: 4, previous_year_value:4000, current_year_quantity:14, current_year_value:14000},
+  {x: "Lavaplatos ", month_name: "Agosto", previous_year_quantity: 3, previous_year_value:3000, current_year_quantity:13, current_year_value:13000},
+  {x: "Axion Aloe", month_name: "Septiembre", previous_year_quantity: 2, previous_year_value:2000, current_year_quantity:12, current_year_value:12000},
+  {x: "Dental Flos", month_name: "Octubre", previous_year_quantity: 1, previous_year_value:1000, current_year_quantity:11, current_year_value:11000}
 ];
 
 const dataPtosVta =
@@ -124,7 +100,7 @@ const vw_daily_sale =
   {pk:"7702010000010", sk:"7701001002804#KCM ALMACENES EXITO", quantity:204, total_price:2885769, day_of_week:'d'},
   {pk:"7702010000010", sk:"7701001002903#KCM ALMACENES EXITO", quantity:63, total_price:632936, day_of_week:'l'},
   {pk:"7702010000010", sk:"7701001002903#KCM ALMACENES EXITO", quantity:61, total_price:718183, day_of_week:'m'},
-  {pk:"7702010000010", sk:"7701001002903#KCM ALMACENES EXITO", quantity:3141, total_price:175409, day_of_week:'x'},
+  {pk:"7702010000010", sk:"7701001002903#KCM ALMACENES EXITO", quantity:31, total_price:175409, day_of_week:'x'},
   {pk:"7702010000010", sk:"7701001002903#KCM ALMACENES EXITO", quantity:57, total_price:729109, day_of_week:'j'},
   {pk:"7702010000010", sk:"7701001002903#KCM ALMACENES EXITO", quantity:59, total_price:735962, day_of_week:'v'},
   {pk:"7702010000010", sk:"7701001002903#KCM ALMACENES EXITO", quantity:44, total_price:502873, day_of_week:'s'},
@@ -138,6 +114,46 @@ const vw_daily_sale =
   {pk:"7702010000010", sk:"7701001003306#KCM ALMACENES EXITO", quantity:461, total_price:6285500, day_of_week:'d'}
 ]
 
+//La "x" hace referencia al label de cada partición
+//La "y" es la cantidad
+//Cuando colocamos la etiqueta "label" esta etiqueta anula a X y por ende como label de particion toma lo q coloque en "label"
+const vw_mobile_indicators=
+[
+  {pk:"7702010000010", sk:"7701001002804#JUAN CARLOS GONZALEZ#1#quantity", x:"TOOTHPASTE", y:33693},
+  {pk:"7702010000010", sk:"7701001002804#JUAN CARLOS GONZALEZ#1#quantity", x:"LIQUIDS", y:19549},
+  {pk:"7702010000010", sk:"7701001002804#JUAN CARLOS GONZALEZ#1#quantity", x:"CLEAN", y:13726},
+  {pk:"7702010000010", sk:"7701001002804#JUAN CARLOS GONZALEZ#1#quantity", x:"DISH HAND", y:12115},
+  {pk:"7702010000010", sk:"7701001002804#JUAN CARLOS GONZALEZ#1#quantity", x:"OTROS", y:50000},
+  {pk:"7702010000010", sk:"7701001002804#JUAN CARLOS GONZALEZ#1#value", x:"TOOTHPASTE", y:327550291},
+  {pk:"7702010000010", sk:"7701001002804#JUAN CARLOS GONZALEZ#1#value", x:"LIQUIDS", y:271059066},
+  {pk:"7702010000010", sk:"7701001002804#JUAN CARLOS GONZALEZ#1#value", x:"CLEAN", y:156304685},
+  {pk:"7702010000010", sk:"7701001002804#JUAN CARLOS GONZALEZ#1#value", x:"DISH HAND", y:90843002},
+  {pk:"7702010000010", sk:"7701001002804#JUAN CARLOS GONZALEZ#1#value", x:"OTROS", y:300000},
+
+  {pk:"7702010000010", sk:"7701001002903#JUAN CARLOS GONZALEZ#1#quantity", x:"TOOTHPASTE", y:28471},
+  {pk:"7702010000010", sk:"7701001002903#JUAN CARLOS GONZALEZ#1#quantity", x:"BAR SOAP", y:7212},
+  {pk:"7702010000010", sk:"7701001002903#JUAN CARLOS GONZALEZ#1#quantity", x:"DISH HAND", y:3859},
+  {pk:"7702010000010", sk:"7701001002903#JUAN CARLOS GONZALEZ#1#quantity", x:"LIQUIDS", y:3728},
+  {pk:"7702010000010", sk:"7701001002903#JUAN CARLOS GONZALEZ#1#quantity", x:"OTROS", y:50000},
+  {pk:"7702010000010", sk:"7701001002903#JUAN CARLOS GONZALEZ#1#value", x:"TOOTHPASTE", y:217272091},
+  {pk:"7702010000010", sk:"7701001002903#JUAN CARLOS GONZALEZ#1#value", x:"BAR SOAP", y:48686643},
+  {pk:"7702010000010", sk:"7701001002903#JUAN CARLOS GONZALEZ#1#value", x:"LIQUIDS", y:48519262},
+  {pk:"7702010000010", sk:"7701001002903#JUAN CARLOS GONZALEZ#1#value", x:"AP/DEO", y:39606041},
+  {pk:"7702010000010", sk:"7701001002903#JUAN CARLOS GONZALEZ#1#value", x:"OTROS", y:300000},
+
+  {pk:"7702010000010", sk:"7701001003306#JUAN CARLOS GONZALEZ#1#quantity", x:"TOOTHPASTE", y:67342},
+  {pk:"7702010000010", sk:"7701001003306#JUAN CARLOS GONZALEZ#1#quantity", x:"LIQUIDS", y:34160},
+  {pk:"7702010000010", sk:"7701001003306#JUAN CARLOS GONZALEZ#1#quantity", x:"CLEAN", y:31415},
+  {pk:"7702010000010", sk:"7701001003306#JUAN CARLOS GONZALEZ#1#quantity", x:"DISH HAND", y:25209},
+  {pk:"7702010000010", sk:"7701001003306#JUAN CARLOS GONZALEZ#1#quantity", x:"OTROS", y:50000},
+  {pk:"7702010000010", sk:"7701001003306#JUAN CARLOS GONZALEZ#1#value", x:"TOOTHPASTE", y:687022452},
+  {pk:"7702010000010", sk:"7701001003306#JUAN CARLOS GONZALEZ#1#value", x:"LIQUIDS", y:479963199},
+  {pk:"7702010000010", sk:"7701001003306#JUAN CARLOS GONZALEZ#1#value", x:"CLEAN", y:334831637},
+  {pk:"7702010000010", sk:"7701001003306#JUAN CARLOS GONZALEZ#1#value", x:"DISH HAND", y:204253751},
+  {pk:"7702010000010", sk:"7701001003306#JUAN CARLOS GONZALEZ#1#value", x:"OTROS", y:300000},
+];
+
+
 const vw_dim_points_of_sale = 
 [
   {ean_point_sale:"7701001002804", point_sale_name:"028 - EXITO DEL ESTE"},
@@ -148,13 +164,12 @@ const vw_dim_points_of_sale =
 export default 
 {
   dataBar,
-  dataPie,
   dataPie2,
-  dataCategoria,
   dataBarMovil,
   dataLine,
   dataBarHorizontal,
   dataPtosVta,
   vw_daily_sale,
-  vw_dim_points_of_sale
+  vw_dim_points_of_sale,
+  vw_mobile_indicators
 };

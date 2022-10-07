@@ -97,6 +97,7 @@ const LineChart = (props) =>
 
           {/* Eje X */}
           <VictoryAxis
+            tickLabelComponent={<VictoryLabel angle={-45}/>}
             style=
             {{ 
                 ticks: {stroke: "grey", size: 5},
@@ -105,7 +106,6 @@ const LineChart = (props) =>
                 //Barra del eje X
                 axis:{stroke: "transparent"},
             }}
-            tickLabelComponent={<VictoryLabel angle={-45}/>}
           />
         </VictoryChart>
       </Box>
